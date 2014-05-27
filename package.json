@@ -1,0 +1,26 @@
+{
+    "name": "logApi",
+    "version": "0.0.2",
+    "private": true,
+    "scripts": {
+        "start": "node ./bin/www"
+    },
+    "dependencies": {
+        "connect":"*",
+        "express": "~4.0.0",
+        "path": "*",
+        "morgan": "*",
+        "cookie-parser": "*",
+        "body-parser": "~1.0.0",
+        "debug": "~0.7.4",
+        "request": "*",
+        "csv": "0.2.6",
+        "redis": "*",
+        "q":"1.0.1",
+        "consistent-hashing":"*",
+        "kafka-node":"*",
+        "kafkaesque":"*",
+        "connect-route":"0.1.4",
+        "qs":"*"
+    }
+}

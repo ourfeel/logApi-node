@@ -1,0 +1,27 @@
+#!/usr/bin/env node
+//var debug = require('debug')('logApi');
+var cluster = require('cluster');
+var app = require('../app');
+
+app.set('port', process.env.PORT || 3000);
+
+if(cluster.isMaster){
+   var cpus = require('os').cpus().length;
+    for(var i=0;i<cpus;i++){
+        cluster.fork();
+    }
+    cluster.on('exit', function(worker, code, signal) {
+        console.log('worker ' + worker.process.pid + ' died');
+        cluster.fork();
+    });
+
+}else {
+
+    var server = app.listen(app.get('port'), function () {
+        console.log('Express server listening on port ' + server.address().port);
+    });
+}
+
+//var server = app.listen(app.get('port'), function () {
+//    console.log('Express server listening on port ' + server.address().port);
+//});
